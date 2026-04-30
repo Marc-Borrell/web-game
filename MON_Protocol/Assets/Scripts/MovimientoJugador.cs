@@ -1,0 +1,80 @@
+using System.Collections;
+using UnityEngine;
+
+public class MovimientoJugador : MonoBehaviour
+{
+    [Header("Configuración de Rejilla")]
+    public float gridUnit = 1.0f;        
+    public float moveSpeed = 5.0f;       
+    public float jumpHeight = 0.5f; 
+
+    private bool isMoving = false;      
+    private Vector3 targetPosition;
+
+    void Update()
+    {
+        if (!isMoving)
+        {
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
+
+            if (x != 0) z = 0; 
+
+            if (x != 0 || z != 0)
+            {
+                Vector3 direction = new Vector3(x, 0, z);
+                TryMove(direction);
+            }
+        }
+    }
+
+    private void TryMove(Vector3 direction)
+    {
+        targetPosition = transform.position + (direction * gridUnit);
+        
+        if (CanMove(direction))
+        {
+            StartCoroutine(MoveRoutine(targetPosition));
+        }
+    }
+
+    private bool CanMove(Vector3 direction)
+    {
+        // Lanzar el Raycast un poco más arriba para no chocar con el suelo
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, direction, out RaycastHit hit, gridUnit))
+        {
+            return false; 
+        }
+        return true;
+    }
+
+    private IEnumerator MoveRoutine(Vector3 target)
+    {
+        isMoving = true;
+
+        Vector3 startPosition = transform.position;
+        float elapsedTime = 0;
+        
+        float distance = Vector3.Distance(startPosition, target);
+        float duration = distance / moveSpeed;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float percent = elapsedTime / duration;
+            
+            Vector3 currentPos = Vector3.Lerp(startPosition, target, percent);
+
+            // Movimiento vertical (Arco usando una función de seno)
+            // Mathf.Sin nos da un valor de 0 a 1 y vuelve a 0 en el rango de 0 a PI
+            currentPos.y += Mathf.Sin(percent * Mathf.PI) * jumpHeight;
+
+            transform.position = currentPos;
+            yield return null;
+        }
+
+        // Ajuste final para precisión perfecta
+        transform.position = target;
+        isMoving = false;
+    }
+}
