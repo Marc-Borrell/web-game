@@ -30,6 +30,8 @@ public class MovimientoJugador : MonoBehaviour
 
     private void TryMove(Vector3 direction)
     {
+        transform.forward = direction;
+        
         targetPosition = transform.position + (direction * gridUnit);
         
         if (CanMove(direction))
