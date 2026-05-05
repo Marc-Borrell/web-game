@@ -1,1 +1,27 @@
-<p>register works!</p>
+<div class="register">
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <h2>registra't!</h2>
+       <label>
+        Usuari:
+        <input type="text" name="name" [(ngModel)]="name" placeholder="Introdueix el teu usuari" required>
+      </label>
+      <label>
+        Correu:
+        <input type="email" name="email" [(ngModel)]="email" placeholder="Introdueix el teu correu" required>
+      </label>
+      <label>
+        Contrasenya:
+        <input type="password" name="password" [(ngModel)]="password" placeholder="Introdueix la teva contrasenya" required>
+      </label>
+      <label>
+        Contrasenya:
+        <input type="password" name="passwordVerify" [(ngModel)]="passwordVerify" placeholder="Introdueix la teva contrasenya de nou" required>
+      </label>
+      <div *ngIf="error" class="error-msg">{{ error }}</div>
+      <br>
+        <button type="submit" [disabled]="loading">{{ loading ? 'Carregant...' : 'Registrar-se' }}</button>
+    </form>
+
+    <a routerLink="/login">Ja tens compte? Inicia sessió</a>
+
+</div>
