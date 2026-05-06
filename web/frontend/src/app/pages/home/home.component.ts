@@ -21,16 +21,21 @@ export class Home {
   }
 
   ngOnInit() {
+        const token = this.authService.getToken(); // el JWT que guardas en localStorage/sessionStorage
+
         //@ts-ignore
         createUnityInstance(document.querySelector("#unity-canvas"), {
-          dataUrl: "/unity/Build/probaWeb.data",
-          frameworkUrl: "/unity/Build/probaWeb.framework.js",
-           codeUrl: "/unity/Build/probaWeb.wasm",
+          dataUrl: "/unity/Build/juegoxd.data",
+          frameworkUrl: "/unity/Build/juegoxd.framework.js",
+           codeUrl: "/unity/Build/juegoxd.wasm",
           streamingAssetsUrl: "StreamingAssets",
           companyName: "QQClan",
           productName: "NOM-Protocol",
           productVersion: "1.0"
-        });
+        }).then((unityInstance: any) => {
+    // Cuando Unity está listo, le mandamos el token
+    unityInstance.SendMessage('GameManager', 'SetAuthToken', token);
+  });
   }
 
 }

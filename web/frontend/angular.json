@@ -30,7 +30,7 @@
               }
             ],
             "scripts": [
-              "public/unity/Build/probaWeb.loader.js"
+              "public/unity/Build/juegoxd.loader.js"
             ],
             "styles": [
               "src/styles.scss",
@@ -104,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
