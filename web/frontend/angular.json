@@ -29,8 +29,12 @@
                 "input": "public"
               }
             ],
+            "scripts": [
+              "public/unity/Build/probaWeb.loader.js"
+            ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "public/unity/TemplateData/style.css"
             ]
           },
           "configurations": {
