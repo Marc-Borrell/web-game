@@ -7,11 +7,16 @@
     <title>Inici</title>
 </head>
 <body>
-    <header><button (click)="logout()">Acabar sessió</button></header>
+    <nav>
+    <app-navbar />
+    </nav>
+    
 
     <h1>Benvingut {{this.usuari}} !</h1>
 
     <canvas id="unity-canvas" width=960 height=600 style="width: 800px; height: 600px; background: #231F20"></canvas>
+
+    
 
     
 </body>
