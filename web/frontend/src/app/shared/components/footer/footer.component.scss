@@ -1,0 +1,20 @@
+:host {
+            --bg-body: #08090a;
+            --bg-card: #121417;
+            --bg-header: rgba(10, 11, 13, 0.95);
+            --neon-cyan: #00f2ff;
+            --neon-green: #32ff7e;
+            --glitch-magenta: #ff0055;
+            --text-main: #e0e0e0;
+}
+
+ul {
+            background: var(--bg-header);
+            padding: 15px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            color: var(--text-main);
+            font-size: 1rem;
+            border-top: 1px solid #222;
+            list-style-type: none;
+}
