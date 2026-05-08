@@ -25,7 +25,7 @@ export class Home {
   ngOnInit() {
         const token = this.authService.getToken(); // el JWT que guardas en localStorage/sessionStorage
 
-        const username = 
+        const username = this.authService.getUser().name;
 
         //@ts-ignore
         createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -38,7 +38,7 @@ export class Home {
           productVersion: "1.0"
         }).then((unityInstance: any) => {
     // Cuando Unity está listo, le mandamos el token
-    unityInstance.SendMessage('GameManager', 'SetAuthToken', token);
+    unityInstance.SendMessage('GameManager', 'SetAuthToken', token, username);
   });
   }
 
