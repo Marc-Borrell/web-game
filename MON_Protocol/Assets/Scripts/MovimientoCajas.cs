@@ -5,7 +5,8 @@ public class MovimientoCajas : MonoBehaviour
 {
     public float gridUnit = 1.0f;
     public float moveSpeed = 5.0f;
-    public LayerMask layerBloqueo; // Capa para muros y cajas
+    public LayerMask layerBloqueo; 
+    public LayerMask capaSoloCajas; // Capa para muros y cajas
     private bool isBusy = false;
     
     private GameObject cajaObjetivo;
@@ -38,7 +39,7 @@ public class MovimientoCajas : MonoBehaviour
     private void EncenderAura()
     {
         // Miramos si hay una caja frente al conejo (usamos transform.forward)
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, gridUnit))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, gridUnit,capaSoloCajas))
         {
             if (hit.collider.CompareTag("Caja"))
             {
@@ -75,7 +76,7 @@ public class MovimientoCajas : MonoBehaviour
     private void TryPushBox(Vector3 direction)
     {
         // Raycast para ver si hay una caja adelante
-        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, gridUnit))
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, gridUnit,capaSoloCajas))
         {
             if (hit.collider.CompareTag("Caja"))
             {
@@ -83,7 +84,7 @@ public class MovimientoCajas : MonoBehaviour
                 Vector3 targetCaja = caja.transform.position + (direction * gridUnit);
 
                 // Raycast secundario: ¿Hay espacio detrás de la caja?
-                if (!Physics.Raycast(caja.transform.position, direction, gridUnit))
+                if (!Physics.Raycast(caja.transform.position, direction, gridUnit,layerBloqueo))
                 {
                     StartCoroutine(PushRoutine(caja.transform, targetCaja));
                 }

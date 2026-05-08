@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 3
   tags:
   - Caja
+  - ZonaWin
+  - CajaCompletada
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Cajas
+  - PlayerBlocker
+  - TransparentObject
   - 
   - 
   - 
