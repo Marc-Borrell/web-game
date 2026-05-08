@@ -25,6 +25,8 @@ export class Home {
   ngOnInit() {
         const token = this.authService.getToken(); // el JWT que guardas en localStorage/sessionStorage
 
+        const username = 
+
         //@ts-ignore
         createUnityInstance(document.querySelector("#unity-canvas"), {
           dataUrl: "/unity/Build/juegoxd.data",
