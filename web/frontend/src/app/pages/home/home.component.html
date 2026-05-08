@@ -7,17 +7,25 @@
     <title>Inici</title>
 </head>
 <body>
-    <nav>
-    <app-navbar />
-    </nav>
-    
+    <div class="container-fluid p-0">
+        <nav>
+            <app-navbar />
+        </nav>
 
-    <h1>Benvingut {{this.usuari}} !</h1>
+        <div class="main-content container-fluid d-flex flex-column align-items-center text-center py-4 px-2 px-md-4">
 
-    <canvas id="unity-canvas" width=960 height=600 style="width: 800px; height: 600px; background: #231F20"></canvas>
+            <h1 class="mb-4">Benvingut {{ usuari }} !</h1>
 
-    
+            <div class="canvas-wrapper">
+                <canvas
+                    id="unity-canvas"
+                    width="960"
+                    height="600">
+                </canvas>
+            </div>
 
-    <app-footer/>
+        </div>
+    </div>
+    <app-footer />
 </body>
 </html>

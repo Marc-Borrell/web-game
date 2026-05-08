@@ -4,35 +4,14 @@
         <li><a [routerLink]="['/home']"><img src="titulo-white2.png" alt="logo"></a></li>
         <li><a [routerLink]="['/levels']">Nivells</a></li>
         <li><a [routerLink]="['/rankings']">Ranking</a></li>
-       <!-- <li class="dropdown">Dropdown Menu 
+        <li class="dropdown"> {{this.usuari}}
             <div>
                 <div class="dropdown-content">
-                    <div class="login">
-                        <form #f="ngForm" (ngSubmit)="onSubmit()">
-                            <h2>Iniciar sessió</h2>
-                        <label>
-                            Email:
-                            <input type="email" name="email" [(ngModel)]="email" placeholder="Introdueix el teu correu" required>
-                        </label>
-                        <label>
-                            Contrasenya:
-                            <input type="password" name="password" [(ngModel)]="password" placeholder="Introdueix la teva contrasenya" required>
-                        </label> 
-
-                        <div *ngIf="error" class="error-msg">{{ error }}</div>
-                        <br><br>
-                            <button type="submit" [disabled]="loading" >
-                            {{ loading ? 'Carregant...' : 'Iniciar sessió' }}
-                            </button>
-                        </form>
-
-                        <a href="/register">Si encara no estàs registrat fes-ho ara!</a>
-
-                    </div>
+                    <button (click)="logout()">Tancar sessió</button>
                 </div> 
             </div>
-        </li> -->
-        <li><button (click)="logout()">Tancar sessió</button></li>
+        </li>
+        <!-- <li><button (click)="logout()">Tancar sessió</button></li> -->
       </ul>
     </nav>
 </div>

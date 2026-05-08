@@ -19,7 +19,7 @@ export class Navbar {
 
   private router = inject(Router);
   private authService = inject(Auth);
-
+  public usuari: String = this.authService.getUser().name; 
 
   logout() {
     this.authService.logout();

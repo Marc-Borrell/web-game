@@ -75,4 +75,15 @@ export class Auth {
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
+
+  googleLogin(googleToken: string): Observable<AuthResponse> {
+  return this.http.post<AuthResponse>(`${this.baseURL}/google`, { googleToken }).pipe(
+    tap((response) => {
+      if (response.token) {
+        localStorage.setItem('auth_token', response.token);
+        localStorage.setItem('auth_user', JSON.stringify(response.user));
+      }
+    })
+  );
+}
 }

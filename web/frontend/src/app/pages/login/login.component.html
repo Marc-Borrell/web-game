@@ -17,6 +17,36 @@
         </button>
     </form>
 
+   <!-- <button type="button" (click)="loginWithGoogle()">
+    Iniciar sessió amb Google
+    </button> -->
+    
+
     <a href="/register">Si encara no estàs registrat fes-ho ara!</a>
+
+
+    <!--<div class="login">
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <h2>Iniciar sessió</h2>
+        <label>
+            Email:
+            <input type="email" name="email" [(ngModel)]="email" placeholder="Introdueix el teu correu" required>
+        </label>
+        <label>
+            Contrasenya:
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Introdueix la teva contrasenya" required>
+        </label>
+
+        <div *ngIf="error" class="error-msg">{{ error }}</div>
+        <br><br>
+        <button type="submit" [disabled]="loading">
+            {{ loading ? 'Carregant...' : 'Iniciar sessió' }}
+        </button>
+    </form>
+
+    <asl-google-signin-button type="standard" size="large"></asl-google-signin-button>
+
+    <a href="/register">Si encara no estàs registrat fes-ho ara!</a>
+</div>-->
 
 </div>
