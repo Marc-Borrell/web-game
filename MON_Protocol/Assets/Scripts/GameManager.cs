@@ -9,13 +9,23 @@ public class GameManager : MonoBehaviour
     private string authToken;
     private string usuario;
 
-    // Angular llama a este método via SendMessage
-    public void SetAuthToken(string token, string username)
+    // Angular llama a este mï¿½todo via SendMessage
+    [System.Serializable]
+    public class AuthPayload
     {
-        authToken = token;
-        usuario = username;
-        Debug.Log("Token recibido: " + token);
-        Debug.Log("Usuario actual" + username);
+        public string token;
+        public string username;
+    }
+
+    public void SetAuthToken(string json)
+    {
+        AuthPayload data = JsonUtility.FromJson<AuthPayload>(json);
+
+        authToken = data.token;
+        usuario = data.username;
+
+        Debug.Log("Token recibido: " + authToken);
+        Debug.Log("Usuario actual: " + usuario);
     }
 
 
