@@ -7,13 +7,17 @@ using System.Globalization;
 public class GameManager : MonoBehaviour
 {
     private string authToken;
+    private string usuario;
 
     // Angular llama a este método via SendMessage
-    public void SetAuthToken(string token)
+    public void SetAuthToken(string token, string username)
     {
         authToken = token;
+        usuario = username;
         Debug.Log("Token recibido: " + token);
+        Debug.Log("Usuario actual" + username);
     }
+
 
     // Ejemplo: guardar score al acabar un nivel
    /* public void SaveScore(int levelId, int moves, int timeMs)
