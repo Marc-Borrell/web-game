@@ -37,8 +37,12 @@ export class Home {
           productName: "NOM-Protocol",
           productVersion: "1.0"
         }).then((unityInstance: any) => {
+           const payload = {
+            token: token,
+            username: username
+          };
     // Cuando Unity está listo, le mandamos el token
-    unityInstance.SendMessage('GameManager', 'SetAuthToken', token, username);
+    unityInstance.SendMessage('GameManager', 'SetAuthToken', JSON.stringify(payload));
   });
   }
 
