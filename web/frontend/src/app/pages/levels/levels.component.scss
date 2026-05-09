@@ -10,3 +10,47 @@
     position: block;
     margin: auto;
 }
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: teal;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: bold;
+}
+
+a {
+  background: red;
+}
+
+button {
+  text-align: right;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden; // corta cualquier desbordamiento
+
+  #unity-canvas {
+    width: 100% !important;
+    height: 600px !important;
+    max-width: 960px;
+    display: block;
+    border: 1px solid #ccc;
+    // Escalamos visualmente el canvas manteniendo su resolución interna
+    aspect-ratio: 960 / 600;
+    object-fit: contain;
+    position: block;
+    margin: auto;
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 120px);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.row{
+  width: 100%;
+}
