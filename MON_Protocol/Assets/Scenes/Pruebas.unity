@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1594f6cc43d741845b11d2aac75912f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  usernameText: {fileID: 0}
+  usernameText: {fileID: 500609405}
 --- !u!4 &551864367
 Transform:
   m_ObjectHideFlags: 0
