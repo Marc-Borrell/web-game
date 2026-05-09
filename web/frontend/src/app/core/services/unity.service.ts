@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class UnityService {
-    
+
   private unityInstance: any = null;
+  pendingLevel: string | null = null;
 
   setInstance(instance: any) {
     this.unityInstance = instance;

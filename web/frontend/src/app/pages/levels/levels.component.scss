@@ -1,0 +1,12 @@
+#unity-canvas {
+    width: 100% !important;
+    height: 600px !important;
+    max-width: 960px;
+    display: block;
+    border: 1px solid #ccc;
+    // Escalamos visualmente el canvas manteniendo su resolución interna
+    aspect-ratio: 960 / 600;
+    object-fit: contain;
+    position: block;
+    margin: auto;
+}

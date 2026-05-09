@@ -1,11 +1,16 @@
-<app-navbar/>
+<app-navbar />
+<header>
+    <script src="/src/assets/unity/Build/probaWeb.loader.js"></script>
+</header>
 <div class="page">
-<h1>Nivells</h1>
+    <h1>Nivells</h1>
 
-@for (level of levels; track level.id) {
-  <button (click)="cargarNivel(level.name)">
-    {{ level.name }}
-  </button>
-}
+    @for (level of levels; track level.id) {
+    <button (click)="cargarNivel(level.name)">
+        {{ level.name }}
+    </button>
+    }
+
+    <canvas id="unity-canvas" width="960" height="600"></canvas>
 </div>
-<app-footer/>
+<app-footer />
