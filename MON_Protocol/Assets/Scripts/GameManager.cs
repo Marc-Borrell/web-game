@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Globalization;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public class GameManager : MonoBehaviour
         {
             usernameText.text = usuario;
         }
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        Debug.Log("Cargando nivel: " + levelName);
+        SceneManager.LoadScene(levelName);
     }
 
 
