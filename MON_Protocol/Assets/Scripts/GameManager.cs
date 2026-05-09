@@ -3,11 +3,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.Globalization;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private string authToken;
     private string usuario;
+
+    public TMP_Text usernameText;
 
     // Angular llama a este m�todo via SendMessage
     [System.Serializable]
@@ -26,6 +29,11 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Token recibido: " + authToken);
         Debug.Log("Usuario actual: " + usuario);
+
+        if (usernameText != null)
+        {
+            usernameText.text = usuario;
+        }
     }
 
 
