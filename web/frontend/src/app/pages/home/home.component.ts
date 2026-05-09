@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Auth } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { Navbar } from '../../shared/components/navbar/navbar.component';
 import { Footer } from '../../shared/components/footer/footer.component';
+import { UnityService } from '../../core/services/unity.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,13 @@ import { Footer } from '../../shared/components/footer/footer.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class Home {
+export class Home implements OnInit
+ {
+
+    constructor(private unityService: UnityService) {
+      
+    }
+  
 
   private authService = inject(Auth);
   private router = inject(Router);
@@ -23,6 +30,8 @@ export class Home {
   }
 
   ngOnInit() {
+
+    if (this.unityService.getInstance()) return;
         const token = this.authService.getToken(); // el JWT que guardas en localStorage/sessionStorage
 
         const username = this.authService.getUser().name;
@@ -37,13 +46,18 @@ export class Home {
           productName: "NOM-Protocol",
           productVersion: "1.0"
         }).then((unityInstance: any) => {
-           const payload = {
-            token: token,
-            username: username
-          };
-    // Cuando Unity está listo, le mandamos el token
-    unityInstance.SendMessage('GameManager', 'SetAuthToken', JSON.stringify(payload));
-  });
+          
+          this.unityService.setInstance(unityInstance);
+
+           const payload = JSON.stringify({ token, username });
+
+    (window as any).onUnityReady = () => {
+        this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
+      };
+      setTimeout(() => {
+        this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
+      }, 3000);
+    });
   }
 
 }

@@ -1,5 +1,11 @@
 <app-navbar/>
 <div class="page">
-<p>levels works!</p>
+<h1>Nivells</h1>
+
+@for (level of levels; track level.id) {
+  <button (click)="cargarNivel(level.name)">
+    {{ level.name }}
+  </button>
+}
 </div>
 <app-footer/>
