@@ -8,6 +8,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    void Awake()
+    {
+        // Solo permite que exista un GameManager en todo el juego
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameController");
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+    
     private string authToken;
     private string usuario;
 

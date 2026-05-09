@@ -3864,6 +3864,7 @@ MonoBehaviour:
   elevador: {fileID: 449474234}
   player: {fileID: 494003918}
   nanobot: {fileID: 150748060}
+  PlayerName: {fileID: 500609405}
   manager: {fileID: 408428619}
   velocidad: 5
   alturaInicial: 10

@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SecuenciaVictoria : MonoBehaviour
 {
     public Transform elevador;
     public GameObject player; // El conejo (Bunny)
     public GameObject nanobot;
+    public TextMeshPro PlayerName;
     
     public LogicaNivel manager;
     
@@ -29,6 +31,7 @@ public class SecuenciaVictoria : MonoBehaviour
     public GameObject panelVictoria; 
     public TextMeshProUGUI textoPuntosFinal;
     public TextMeshProUGUI textoTiempoFinal;
+    public GameObject btnContinuar;
 
     public void IniciarAnimacionFinal()
     {
@@ -72,6 +75,7 @@ public class SecuenciaVictoria : MonoBehaviour
         // Simplemente los apagamos. Esto quita movimiento, render y sombra.
         if (player != null) player.SetActive(false);
         if (nanobot != null) nanobot.SetActive(false);
+        if (PlayerName != null) PlayerName.SetText("");
 
         // Pausa para que se note que "ya no están" y sube la plataforma vacía
         yield return new WaitForSeconds(esperaTrasDesaparecer);
@@ -113,6 +117,14 @@ public class SecuenciaVictoria : MonoBehaviour
             int minutos = Mathf.FloorToInt(timer.tiempoEnSegundos / 60);
             int segundos = Mathf.FloorToInt(timer.tiempoEnSegundos % 60);
             textoTiempoFinal.text = string.Format("Tiempo: {0:00}:{1:00}", minutos, segundos);
+        }
+        
+        int totalEscenas = SceneManager.sceneCountInBuildSettings;
+        int indiceActual = SceneManager.GetActiveScene().buildIndex;
+        
+        if (btnContinuar != null) 
+        {
+            btnContinuar.SetActive(indiceActual < totalEscenas - 1);
         }
         
         // Liberar el cursor para que el jugador pueda hacer clic en el botón
