@@ -51,7 +51,10 @@ public class GameManager : MonoBehaviour
 
     public void SetAuthToken(string json)
     {
-        UpdateUsernameUI();
+        AuthPayload data = JsonUtility.FromJson<AuthPayload>(json);
+
+        authToken = data.token;
+        usuario = data.username;
 
         Debug.Log("Token recibido: " + authToken);
         Debug.Log("Usuario actual: " + usuario);
@@ -93,25 +96,7 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogError("Error: " + request.error);
     } */
-
-   // Nueva función para actualizar la UI si existe
-   public void UpdateUsernameUI()
-   {
-       if (usernameText != null)
-       {
-           usernameText.text = usuario;
-       }
-   }
-
-   // Función que llamarán los objetos de cada escena nueva
-   public void RegisterTextElement(TMP_Text newTextElement)
-   {
-       usernameText = newTextElement;
-       UpdateUsernameUI(); // Actualiza inmediatamente con el nombre guardado
-   }
 }
-
- 
 
 [System.Serializable]
 public class ScorePayload
