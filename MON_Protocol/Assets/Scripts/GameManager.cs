@@ -18,8 +18,24 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this.gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var tmp = GameObject.Find("usernameText");
+        if (tmp != null)
+            usernameText = tmp.GetComponent<TMP_Text>();
+
+        if (usernameText != null && !string.IsNullOrEmpty(usuario))
+            usernameText.text = usuario;
+    }
+
     private string authToken;
     private string usuario;
 
