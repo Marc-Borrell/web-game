@@ -23,38 +23,39 @@ export class Levels implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.levelsService.getLevels().subscribe(data => {
-      this.levels = data;
-    });
+  this.levelsService.getLevels().subscribe(data => {
+    this.levels = data;
+  });
 
-    if (this.unityService.getInstance()) return;
+  // Siempre reiniciamos porque el canvas es nuevo cada vez
+  this.unityService.setInstance(null);
 
-    const token = this.authService.getToken();
-    const username = this.authService.getUser().name;
+  const token = this.authService.getToken();
+  const username = this.authService.getUser().name;
 
-    // @ts-ignore
-    createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "/unity/Build/juegoxd.data",
-      frameworkUrl: "/unity/Build/juegoxd.framework.js",
-      codeUrl: "/unity/Build/juegoxd.wasm",
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "QQClan",
-      productName: "NOM-Protocol",
-      productVersion: "1.0"
-    }).then((instance: any) => {
-      this.unityService.setInstance(instance);
-      const payload = JSON.stringify({ token, username });
+  // @ts-ignore
+  createUnityInstance(document.querySelector("#unity-canvas"), {
+    dataUrl: "/unity/Build/juegoxd.data",
+    frameworkUrl: "/unity/Build/juegoxd.framework.js",
+    codeUrl: "/unity/Build/juegoxd.wasm",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "QQClan",
+    productName: "NOM-Protocol",
+    productVersion: "1.0"
+  }).then((instance: any) => {
+    this.unityService.setInstance(instance);
+    const payload = JSON.stringify({ token, username });
 
-      (window as any).onUnityReady = () => {
-        this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
-      };
-      setTimeout(() => {
-        this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
-      }, 3000);
-    });
-  }
+    (window as any).onUnityReady = () => {
+      this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
+    };
+    setTimeout(() => {
+      this.unityService.sendMessage('GameManager', 'SetAuthToken', payload);
+    }, 3000);
+  });
+}
 
-  cargarNivel(levelName: string) {
-    this.unityService.sendMessage('GameManager', 'LoadLevel', levelName);
-  }
+cargarNivel(levelName: string) {
+  this.unityService.sendMessage('GameManager', 'LoadLevel', levelName);
+}
 }
