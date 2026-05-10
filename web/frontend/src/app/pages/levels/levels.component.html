@@ -11,7 +11,7 @@
                 <div class="col-md-2 col-2"></div>
                 @for (level of levels; track level.id) {
                     <div class="col-auto">
-                        <button (click)="cargarNivel(level.name)">
+                        <button (click)="cargarNivel(level.name, $event)">
                             {{ level.name }}
                         </button>
                     </div>       

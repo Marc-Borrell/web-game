@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import { Auth } from '../../../core/services/auth.service';
+import { UnityService } from '../../../core/services/unity.service';
 
 @Component({  
   selector: 'app-navbar',
@@ -21,9 +22,20 @@ export class Navbar {
   private authService = inject(Auth);
   public usuari: String = this.authService.getUser().name; 
 
-  logout() {
+  constructor(private unityService: UnityService) {}
+
+ logout() {
+  const instance = this.unityService.getInstance();
+  if (instance) {
+    instance.Quit().then(() => {
+      this.unityService.setInstance(null);
+      this.authService.logout();
+      window.location.href = '/login';
+    });
+  } else {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
   }
+}
 
 }

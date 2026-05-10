@@ -17,16 +17,11 @@ export class Home implements OnInit {
 
   }
 
-
   private authService = inject(Auth);
   private router = inject(Router);
 
   public usuari: String = this.authService.getUser().name;
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 
   ngOnInit() {
 

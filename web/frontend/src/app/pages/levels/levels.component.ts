@@ -55,7 +55,8 @@ export class Levels implements OnInit {
   });
 }
 
-cargarNivel(levelName: string) {
+cargarNivel(levelName: string, event: MouseEvent) {
+  (event.target as HTMLElement).blur();
   this.unityService.sendMessage('GameManager', 'LoadLevel', levelName);
 }
 }
