@@ -24,6 +24,12 @@ export class Register {
   onSubmit() {
     this.error = '';
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(this.password)) {
+    this.error = 'La contrasenya ha de tenir mínim 8 caràcters, una majúscula, una minúscula, un número i un caràcter especial (@$!%*?&)';
+    return;
+  }
+
     if (this.password !== this.passwordVerify) {
       this.error = 'Les contrasenyes no coincideixen';
        return;
