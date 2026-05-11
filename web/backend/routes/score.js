@@ -29,7 +29,7 @@ router.post('/', auth, async (req, res) => {
         const old = existing.rows[0];
 
         const isBetter =
-            moves < old.moves ||
+            moves > old.moves ||
             (moves === old.moves && time_ms < old.time_ms);
 
         if (isBetter) {

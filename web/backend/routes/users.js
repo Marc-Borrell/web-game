@@ -89,7 +89,7 @@ router.get('/me', auth, async (req, res) => {
     }
 });
 
-router.post('/google', async (req, res) => {
+/*router.post('/google', async (req, res) => {
     const { googleToken } = req.body;
     try {
         
@@ -120,7 +120,7 @@ router.post('/google', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(401).json({ msg: "Token de Google invàlid" });
-    }
-});
+    } 
+});*/
 
 module.exports = router;
