@@ -1,10 +1,9 @@
 <app-navbar/>
-<div class="page">
-<div class="container py-4">
+<div class="page main">
+<div class="container py-4 h-100">
   <h1 class="mb-4">Ranking </h1>
 
-  <!-- Selector de nivel -->
-  <div class="mb-4 d-flex gap-2 justify-content-center">
+  <div class="mb-4 d-flex gap-2 justify-content-center ">
     @for (nivell of nivells; track nivell) {
       <button
         class="btn-nivell"
@@ -15,17 +14,16 @@
     }
   </div>
 
-  <!-- Tabla -->
   <div class="taula-wrapper">
     @if (carregant) {
       <div class="text-center py-4">Carregant...</div>
     } @else if (ranking.length > 0) {
-      <table>
+      <table class="table table-dark table-striped-columns">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Ordre</th>
             <th>Jugador</th>
-            <th>Moviments</th>
+            <th>Puntuació</th>
             <th>Temps</th>
           </tr>
         </thead>
