@@ -5,12 +5,33 @@ h1 {
   font-weight: bold;
 }
 
-a {
-  background: red;
-}
 
 button {
   text-align: right;
+}
+
+$btn-bg-color: #1cbed3;
+$btn-text-color: #ffffff;
+$btn-padding: 10px 20px;
+$btn-radius: 0px;
+
+.btnJugar{
+
+  text-decoration: none;
+  display: inline-block;
+
+  background-color: $btn-bg-color;
+  color: $btn-text-color;
+  padding: $btn-padding;
+  border-radius: $btn-radius;
+  margin-bottom: 25px;
+
+  transition: background-color 0.3 ease;
+
+  &:hover{
+    background-color: $btn-bg-color;
+    color: white;
+  }
 }
 
 .canvas-wrapper {

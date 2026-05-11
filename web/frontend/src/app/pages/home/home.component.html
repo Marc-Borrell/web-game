@@ -1,11 +1,14 @@
+<!--Tambien se puede añadir ranking sobre niveles-->
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/src/assets/unity/Build/probaWeb.loader.js"></script>
     <title>Inici</title>
 </head>
+
 <body>
     <div class="container-fluid p-0">
         <nav>
@@ -14,36 +17,82 @@
 
         <div class="main-content container-fluid d-flex flex-column align-items-center text-center py-4 px-2 px-md-4">
 
-            <h1 class="mb-4">M.O.N.:Protocol</h1>
+            <!--<h1 class="mb-4">M.O.N.:Protocol</h1>-->
             <h2 class="mb-4">Benvingut {{ usuari }} !</h2>
-            
+            <article> Per a començar a jugar prem el botó de jugar!</article><br>
+
+            <p><a href="/levels" class="btnJugar">Jugar!</a></p>
+
             <!-- Implementació de joc -->
             <div class="row justify-content-md-center">
                 <div class="col-md-2 col-2"></div>
-                
-                <div class="col-md-8 col-8 d-flex justify-content-md-center middleContent">
-                    <div class="canvas-wrapper">
-                        <canvas
-                            id="unity-canvas"
-                            width="960"
-                            height="600">
-                        </canvas> 
-                    </div>
-                </div>
-                <div class="col-md-2 col-2"></div>
-            </div>
 
-            <!-- Textos informatius -->
-            <div class=" row justify-content-md-center ">
-                <div class="col-md-2 col-2"></div>
-                
                 <div class="col-md-8 col-8 d-flex justify-content-md-center middleContent">
-                    <h2>Controlls</h2>
+                    <div class="card" style="width: 25rem;">
+                        <div class="card-body">
+                            <div class="instruccions">
+                                <h3>Instruccions</h3>
+                                <p>Aquest joc va sobre moure caixes en el menor temps possible. Quan juguis al joc
+                                    trobaràs un
+                                    personatge que l'objectiu d'aquest serà moure
+                                    caixes i col·locar cada caixa a un lloc on s'ilumini. El número de caixes pot variar
+                                    per
+                                    nivell, la puntuació es basa en que hi ha un comptador
+                                    que aquest va comptant el temps, i has d'introduîr la caixa al lloc il·luminat en el
+                                    menor
+                                    temps possible. És a dir, que si quan més tardi l'usuari
+                                    en situar la caixa, menys puntuació rebrà.
+
+                                    Un cop estiguin totes les caixes al seu lloc corresponent, hauràs d'accedir a la
+                                    meta i la
+                                    teva puntuació s'haurà guardat exitosament.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Textos informatius -->
+                    <div class=" row justify-content-md-center ">
+
+                        <h3>Controls</h3>
+                        <p>El joc està pensat per a què l'experiencia d'usuari sigui la més sencilla per a l'usuari, de
+                            manera
+                            que els controls
+                            per a poder jugar son els següents:
+                        </p>
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="arrows.png" class="card-img-top" alt="fletxa">
+                            <div class="card-body">
+                                <p class="card-text">Tecles fletxa</p>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 18rem;">
+                            <img src="space.png" class="card-img-top" alt="espai">
+                            <div class="card-body">
+                                <p class="card-text">Espai</p>
+                            </div>
+                        </div>
+
+                        <p>Les fletxes controlen la direcció a la que avanaça el jugador, on si polses la fletxa en
+                            direcció dreta el personatge es mourà cap a la dreta, si polses
+                            la fletxa direcció esquerra el personatge es mourà cap a l'esquerra, i el mateix passa amb
+                            la resta de direccions.
+                        </p>
+                        <p>L'espai s'encarrega realitza la funció de moure la caixa segons la direcció a la que estigui
+                            apuntant el personatge.</p>
+
+                    </div>
+
                 </div>
+
                 <div class="col-md-2 col-2"></div>
             </div>
         </div>
     </div>
     <app-footer />
 </body>
+
 </html>
