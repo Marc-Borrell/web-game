@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
              FROM scores s
              JOIN users u ON u.id = s.user_id
              WHERE s.level_id = $1
-             ORDER BY s.moves ASC, s.time_ms ASC
+             ORDER BY s.moves DESC, s.time_ms DESC
              LIMIT 50`,
             [level_id]
         );
