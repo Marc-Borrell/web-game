@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Navbar } from '../../shared/components/navbar/navbar.component';
 import { Footer } from '../../shared/components/footer/footer.component';
 import { UnityService } from '../../core/services/unity.service';
 import { Level } from '../../core/services/level.service';
 import { Router } from '@angular/router';
 import { Auth } from '../../core/services/auth.service';
+import { Score } from '../../core/services/score.service';
 
 @Component({
   selector: 'app-levels',
@@ -12,20 +13,24 @@ import { Auth } from '../../core/services/auth.service';
   templateUrl: './levels.component.html',
   styleUrl: './levels.component.scss',
 })
-export class Levels implements OnInit {
+export class Levels implements OnInit, OnDestroy {
 
   levels: { id: number, name: string }[] = [];
 
   constructor(
     private unityService: UnityService,
     private levelsService: Level,
-    private authService: Auth
+    private authService: Auth,
+    private score: Score,
   ) {}
 
   ngOnInit() {
   this.levelsService.getLevels().subscribe(data => {
     this.levels = data;
   });
+
+  // Escucha el mensaje que manda Unity al acabar partida
+    window.addEventListener('message', this.handleUnityMessage.bind(this));
 
   // Siempre reiniciamos porque el canvas es nuevo cada vez
   this.unityService.setInstance(null);
@@ -59,4 +64,19 @@ cargarNivel(levelName: string, event: MouseEvent) {
   (event.target as HTMLElement).blur();
   this.unityService.sendMessage('GameManager', 'LoadLevel', levelName);
 }
+
+ ngOnDestroy(): void {
+    window.removeEventListener('message', this.handleUnityMessage.bind(this));
+  }
+
+  handleUnityMessage(event: MessageEvent): void {
+    if (event.data?.type === 'GAME_OVER') {
+      const { level_id, moves, time_ms } = event.data;
+
+      this.score.guardarScore({ level_id, moves, time_ms }).subscribe({
+        next: (res) => console.log('Score guardat:', res.msg),
+        error: (err) => console.error('Error guardant score:', err)
+      });
+    }
+  }
 }
