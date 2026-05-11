@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Cargando nivel: " + levelName);
         SceneManager.LoadScene(levelName);
     }
+    
+    
 
 
     // Ejemplo: guardar score al acabar un nivel

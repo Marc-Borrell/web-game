@@ -6,8 +6,9 @@ public class MovimientoJugador : MonoBehaviour
     [Header("Configuración de Rejilla")]
     public float gridUnit = 1.0f;        
     public float moveSpeed = 5.0f;       
-    public float jumpHeight = 0.5f; 
-
+    public float jumpHeight = 0.5f;
+    public LayerMask capasBloqueantes;
+    
     private bool isMoving = false;      
     private Vector3 targetPosition;
 
@@ -43,7 +44,7 @@ public class MovimientoJugador : MonoBehaviour
     private bool CanMove(Vector3 direction)
     {
         // Lanzar el Raycast un poco más arriba para no chocar con el suelo
-        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, direction, out RaycastHit hit, gridUnit))
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, direction, out RaycastHit hit, gridUnit,capasBloqueantes))
         {
             return false; 
         }

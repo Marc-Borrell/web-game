@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,18 @@ public class SecuenciaVictoria : MonoBehaviour
     public TextMeshProUGUI textoPuntosFinal;
     public TextMeshProUGUI textoTiempoFinal;
     public GameObject btnContinuar;
+    
+    [DllImport("__Internal")]
+    private static extern void SendMessageToAngular(string json);
+
+    [System.Serializable]
+    private class GameOverData
+    {
+        public string type = "GAME_OVER";
+        public int level_id;
+        public int moves;
+        public int time_ms;
+    }
 
     public void IniciarAnimacionFinal()
     {
@@ -130,5 +143,27 @@ public class SecuenciaVictoria : MonoBehaviour
         // Liberar el cursor para que el jugador pueda hacer clic en el botón
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+        EnviarScoreAAngular(indiceActual);
+    }
+    
+    void EnviarScoreAAngular(int levelId)
+    {
+        int moves = manager != null ? manager.GetPuntaje() : 0;
+        int timeMs = timer != null ? Mathf.RoundToInt(timer.tiempoEnSegundos * 1000) : 0;
+
+        GameOverData data = new GameOverData
+        {
+            level_id = levelId,
+            moves = moves,
+            time_ms = timeMs
+        };
+
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("Enviando score: " + json);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            SendMessageToAngular(json);
+#endif
     }
 }

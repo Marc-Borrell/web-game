@@ -23,7 +23,7 @@ public class LogicaNivel : MonoBehaviour
     
     private float cronometro = 0f;
     private int puntajeTotal = 0;
-    private int cajasContadas = 0;
+    //private int cajasContadas = 0;
 
     void Start()
     {
