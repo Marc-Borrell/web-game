@@ -1,5 +1,49 @@
 <app-navbar/>
 <div class="page">
-<p>ranking works!</p>
+<div class="container py-4">
+  <h1 class="mb-4">Ranking </h1>
+
+  <!-- Selector de nivel -->
+  <div class="mb-4 d-flex gap-2 justify-content-center">
+    @for (nivell of nivells; track nivell) {
+      <button
+        class="btn-nivell"
+        [class.actiu]="levelSeleccionat === nivell"
+        (click)="levelSeleccionat = nivell; carregarRanking()">
+        Nivell {{ nivell }}
+      </button>
+    }
+  </div>
+
+  <!-- Tabla -->
+  <div class="taula-wrapper">
+    @if (carregant) {
+      <div class="text-center py-4">Carregant...</div>
+    } @else if (ranking.length > 0) {
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jugador</th>
+            <th>Moviments</th>
+            <th>Temps</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entrada of ranking; track entrada.name; let i = $index) {
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{ entrada.name }}</td>
+              <td>{{ entrada.moves }}</td>
+              <td>{{ entrada.time_ms | TimeFormatPipe }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="text-center py-4">Encara no hi ha puntuacions per aquest nivell.</div>
+    }
+  </div>
+</div>
 </div>
 <app-footer/>
