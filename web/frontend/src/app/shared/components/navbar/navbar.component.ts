@@ -30,11 +30,11 @@ export class Navbar {
     instance.Quit().then(() => {
       this.unityService.setInstance(null);
       this.authService.logout();
-      window.location.href = '/login';
+      window.location.href = '/start';
     });
   } else {
     this.authService.logout();
-    window.location.href = '/login';
+    window.location.href = '/start';
   }
 }
 

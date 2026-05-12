@@ -79,15 +79,22 @@ cargarNivel(levelName: string, event: MouseEvent) {
   }
 
   handleUnityMessage(event: MessageEvent): void {
-    if (event.data?.type === 'GAME_OVER') {
-      const { level_id, moves, time_ms } = event.data;
+  if (event.data?.type === 'GAME_OVER') {
+    const { level_id, moves, time_ms } = event.data;
 
-      this.score.guardarScore({ level_id, moves, time_ms }).subscribe({
-        next: (res) => console.log('Score guardat:', res.msg),
-        error: (err) => console.error('Error guardant score:', err)
-      });
-    }
+    this.score.guardarScore({ level_id, moves, time_ms }).subscribe({
+      next: (res) => {
+        this.score.getScoreUser().subscribe({
+          next: (completats) => {
+            this.nivellsCompletats = [...completats]; // reactividad
+          },
+          error: (err) => console.log(err)
+        });
+      },
+      error: (err) => console.error('Error guardant score:', err)
+    });
   }
+}
 
   isNivellDesbloquejat(levelId: number): boolean {
     if(levelId === 1 ) return true;

@@ -8,8 +8,11 @@ import { Ranking } from './pages/ranking/ranking.component';
 import { App } from './app';
 import { authGuard } from './core/guards/auth.guard';
 import { Auth } from './core/services/auth.service';
+import { Start } from './pages/start/start';
 
 export const routes: Routes = [
+
+    {path: 'start', component: Start},
     {path: 'register', component: Register},
     {path: 'login',    component: Login },
 
@@ -21,9 +24,9 @@ export const routes: Routes = [
 
     { path: '',   redirectTo: () => {
         const authService = inject(Auth);
-        return authService.isAuthenticated() ? '/home' : '/login';
+        return authService.isAuthenticated() ? '/home' : '/start';
     }, pathMatch: 'full' },
-     { path: '**', redirectTo: 'login' }
+     { path: '**', redirectTo: 'start' }
 
 
 ];
