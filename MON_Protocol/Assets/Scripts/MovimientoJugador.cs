@@ -44,9 +44,24 @@ public class MovimientoJugador : MonoBehaviour
     private bool CanMove(Vector3 direction)
     {
         // Lanzar el Raycast un poco más arriba para no chocar con el suelo
-        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, direction, out RaycastHit hit, gridUnit,capasBloqueantes))
+        // 1. Lanzamos un rayo que detecta TODO (sin filtrar capas al principio)
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, direction, out RaycastHit hit, gridUnit))
         {
-            return false; 
+            // 2. ¿Es un objeto con el script LlavePick?
+            if (hit.collider.TryGetComponent<LlavePick>(out LlavePick llave))
+            {
+                // Ejecutamos el Debug (o la función de recoger)
+                llave.DetectarContacto(); 
+                // Retornamos true para que el jugador pueda entrar en esa casilla
+                return true; 
+            }
+
+            // 3. Si es un muro (está en la capa bloqueante), no podemos movernos
+            // Comprobamos si la capa del objeto golpeado está en capasBloqueantes
+            if (((1 << hit.collider.gameObject.layer) & capasBloqueantes) != 0)
+            {
+                return false;
+            }
         }
         return true;
     }
