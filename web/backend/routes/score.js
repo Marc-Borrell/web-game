@@ -49,4 +49,18 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
+router.get('/bloquejat', auth, async (req, res) => {
+    const userId = req.user.id;
+    try {
+        const result = await pool.query(
+            'SELECT level_id FROM scores WHERE user_id = $1',
+            [userId]
+        );
+        res.json(result.rows.map(r => r.level_id));
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: "Error del servidor" });
+    }
+});
+
 module.exports = router;
