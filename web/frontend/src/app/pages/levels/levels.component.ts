@@ -16,6 +16,7 @@ import { Score } from '../../core/services/score.service';
 export class Levels implements OnInit, OnDestroy {
 
   levels: { id: number, name: string }[] = [];
+  nivellsCompletats: number[] = [];
 
   constructor(
     private unityService: UnityService,
@@ -25,6 +26,14 @@ export class Levels implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+
+    this.score.getScoreUser().subscribe({
+      next: (completats) => {
+        this.nivellsCompletats = completats;
+      },
+      error: (err) => console.log(err)
+    });
+
   this.levelsService.getLevels().subscribe(data => {
     this.levels = data;
   });
@@ -78,5 +87,13 @@ cargarNivel(levelName: string, event: MouseEvent) {
         error: (err) => console.error('Error guardant score:', err)
       });
     }
+  }
+
+  isNivellDesbloquejat(levelId: number): boolean {
+    if(levelId === 1 ) return true;
+   for (let i = 1; i < levelId; i++) {
+    if (!this.nivellsCompletats.includes(i)) return false;
+  }
+  return true;
   }
 }

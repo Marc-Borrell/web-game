@@ -11,8 +11,16 @@
                 <div class="col-md-2 col-2"></div>
                 @for (level of levels; track level.id) {
                     <div class="col-auto">
-                        <button (click)="cargarNivel(level.name, $event)">
+                        <button 
+                         [class.bloquejat]="!isNivellDesbloquejat(level.id)"
+                         [disabled]="!isNivellDesbloquejat(level.id)"
+                        (click)="cargarNivel(level.name, $event)">
+                        @if (isNivellDesbloquejat(level.id)) {
                             {{ level.name }}
+                        }@else {
+                            {{level.name}}
+                        }
+                            
                         </button>
                     </div>       
                 }

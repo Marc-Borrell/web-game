@@ -7,13 +7,13 @@ import { OAuthService, AuthConfig } from 'angular-oauth2-oidc';
 import { environment } from '../../../environments/environment';
 
 
-const googleAuthConfig: AuthConfig = {
+/*const googleAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
   clientId: environment.googleClientId,
   redirectUri: window.location.origin,
   scope: 'openid profile email',
-};
+}; */
 
 @Component({
   selector: 'app-login',
