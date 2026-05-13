@@ -92,6 +92,14 @@ $btn-radius: 0px;
   text-align: center;
 }
 
+.btn-primary{
+  background-color: black;
+  color: white;
+  &:hover{
+    color: var(--neon-cyan);
+  }
+}
+
 .row{
   width: 100%;
 }
