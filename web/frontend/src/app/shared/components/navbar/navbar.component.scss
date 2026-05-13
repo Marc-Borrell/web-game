@@ -1,150 +1,90 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans");
 
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+nav.navbar {
+  background-color: #000;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 0 40px;
+  min-height: 80px;
 
-nav {
+  // Logo
+  .navbar-brand img {
+    height: 55px;
+    display: block;
+  }
 
-    width: 100%;
+  // Toggler (hamburger) — override Bootstrap border
+  .navbar-toggler {
+    border-color: #259bb5;
+    &:focus { box-shadow: none; }
+    .navbar-toggler-icon {
+      filter: invert(1); // makes it white on dark bg
+    }
+  }
+
+  // Collapsed menu background on mobile
+  .navbar-collapse {
+    @media (max-width: 767px) {
+      background-color: #000;
+      padding: 12px 0;
+    }
+  }
+
+  // Nav links
+  .nav-link {
+    font-family: "Fira Sans", sans-serif;
+    color: white !important;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: #00d9ff !important;
+      transform: translateY(-2px);
+    }
+  }
+
+  // Username label
+  .user-name {
+    color: white !important;
+  }
+
+  // Dropdown menu
+  .dropdown-menu {
     background-color: #000;
-    border-bottom: 1px solid #1a1a1a;
-
-    padding: 0 40px;
-
-    box-sizing: border-box;
-
-    ul {
-
-        display: flex;
-        align-items: center;
-
-        gap: 40px;
-
-        list-style: none;
-
-        margin: 0;
-        padding: 0;
-
-        height: 80px;
-    }
-
-    li {
-
-        display: flex;
-        color: white;
-        align-items: center;
-
-        font-family: "Fira Sans", sans-serif;
-    }
-
-    a {
-
-        color: white;
-
-        text-decoration: none;
-
-        font-size: 18px;
-        font-weight: 500;
-
-        transition:
-            color 0.2s ease,
-            transform 0.2s ease;
-
-        &:hover {
-
-            color: #00d9ff;
-
-            transform: translateY(-2px);
-        }
-    }
-
-    img {
-
-        height: 55px;
-
-        display: block;
-
-        margin-right: 40px;
-    }
-
-    button {
-
-        background: transparent;
-
-        border: 1px solid #259bb5;
-
-        color: white;
-
-        padding: 10px 20px;
-
-        border-radius: 8px;
-
-        cursor: pointer;
-
-        transition: all 0.2s ease;
-
-        &:hover {
-
-            background-color: #111;
-
-            border-color: #00d9ff;
-
-            color: #00d9ff;
-        }
-    }
-}
-
-/* EMPUJA EL ÚLTIMO ITEM A LA DERECHA */
-
-nav ul li:last-child {
-
-    margin-left: auto;
-} 
-
-.content {
-    transition:
-            background-color 0.2s ease,
-                    transform 0.2s ease;
-    transform: translateY(-2px);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%; 
-    left: 50%;
-    transform: translateX(-50%);
-    background: #000;
-    padding: 10px;
+    border: 1px solid #259bb5;
     border-radius: 10px;
     min-width: max-content;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    z-index: 1000;
-}
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 
+    .dropdown-item {
+      background: transparent;
+      color: white;
+      font-family: "Fira Sans", sans-serif;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      border: none;
+      width: 100%;
+      text-align: left;
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+      &:hover {
+        background-color: #111;
+        color: #00d9ff;
+      }
+    }
+  }
 
-.dropdown-content button {
-    background: transparent;
-    border: 1px solid #00d9ff;
-
-    color: white;
-
-    padding: 10px 20px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-}
-
-.dropdown {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10px; 
+  // Spacing between nav items on desktop
+  @media (min-width: 768px) {
+    .navbar-nav {
+      gap: 24px;
+    }
+  }
 }
