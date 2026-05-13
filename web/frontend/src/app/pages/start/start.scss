@@ -129,3 +129,67 @@
         transform: scale(1.05);
     }
 }
+
+// Animaciones de la imagen
+
+    /* El contenedor define la perspectiva 3D */
+    .alt3D-container {
+      perspective: 1000px;
+    }
+
+    .image-card {
+      
+      position: relative;
+      transition: transform 0.1s ease-out; /* Suaviza el movimiento */
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      
+      cursor: pointer;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      pointer-events: none; /* Evita que la imagen interfiera con el mouse */
+      transform: translateZ(-50px)  rotate(30deg);
+    }
+
+    /* Brillo dinámico (Glow) */
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.2) 0%, transparent 80%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .image-card:hover::after {
+      opacity: 1;
+    }
+
+    .floating-wrapper {
+      animation: floatAnimation 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+      display: block;
+    }
+
+    @keyframes floatAnimation {
+      0% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+        /*box-shadow: 0 10px 30px rgba(0,0,0,0.5);*/
+      }
+      50% {
+        /* Se eleva un poco y se inclina ligeramente en 3D */
+        transform: translateY(-15px) rotateX(1deg) rotateY(-1deg);
+        /*box-shadow: 0 25px 50px rgba(0,0,0,0.3);*/ /* Sombra más suave y difusa al subir */
+      }
+      100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+        /*box-shadow: 0 10px 30px rgba(0,0,0,0.5);*/
+      }
+    }

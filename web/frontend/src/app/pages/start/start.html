@@ -9,18 +9,31 @@
                 <p>Per accedir a aquesta web es necessari utilitzar una compte per
                 l'aplicació</p>
                 <div class="dropdown">
-  <button class="btn btn-prueba dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Comença ara!
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="/login">Registra't</a>
-    <a class="dropdown-item" href="/register">Inicia sessió</a>
-  </div>
-</div>
+                    <button class="btn btn-prueba dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Comença ara!
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/register">Registra't</a>
+                        <a class="dropdown-item" href="/login">Inicia sessió</a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="col-4">
-            <div>IMAGEN</div>
+            <div class="alt3D-container">
+                <div>
+                    <div class="image-card" 
+                        #imageCard
+                        (mousemove)="onMouseMove($event)" 
+                        (mouseleave)="onMouseLeave()"
+                        [style.transform]="cardTransform"
+                        [style.--mouse-x.px]="mouseX"
+                        [style.--mouse-y.px]="mouseY">
+                        <img src="bunny-img.png" alt="Cromo">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
