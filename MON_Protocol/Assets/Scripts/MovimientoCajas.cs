@@ -93,6 +93,22 @@ public class MovimientoCajas : MonoBehaviour
                     Debug.Log("Protocolo Bloqueado: Espacio obstruido tras el objetivo.");
                 }
             }
+            
+            if (hit.collider.CompareTag("CajaNoPunts"))
+            {
+                GameObject caja = hit.collider.gameObject;
+                Vector3 targetCaja = caja.transform.position + (direction * gridUnit);
+
+                // Raycast secundario: ¿Hay espacio detrás de la caja?
+                if (!Physics.Raycast(caja.transform.position, direction, gridUnit,layerBloqueo))
+                {
+                    StartCoroutine(PushRoutine(caja.transform, targetCaja));
+                }
+                else
+                {
+                    Debug.Log("Protocolo Bloqueado: Espacio obstruido tras el objetivo.");
+                }
+            }
         }
     }
 
