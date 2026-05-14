@@ -798,7 +798,7 @@ MonoBehaviour:
   m_text: CONTINUAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1368458582579376213, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_text: REINICIAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1368458582579376213, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1049,7 +1049,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -163}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182463298
 MonoBehaviour:
@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_text: 'Score: 0000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1368458582579376213, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3537,7 +3537,7 @@ MonoBehaviour:
   m_text: VICTORIA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1368458582579376213, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7181,7 +7181,7 @@ MonoBehaviour:
   m_text: 'Tiempo: 00:00'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1368458582579376213, guid: d0fdba5e399094945a7e8569da31ebf4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7902,7 +7902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2118543156
 RectTransform:
   m_ObjectHideFlags: 0
