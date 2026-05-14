@@ -9,19 +9,34 @@
     --text-main: #e0e0e0;
 }
 
-
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: teal;
+.resaltado{
+  color: rgb(14, 162, 195);
+}
+h2 {
+  font-family: orbitron;
+  color: black;
   font-size: clamp(1.2rem, 4vw, 2rem);
   font-weight: bold;
+}
+
+
+h3{
+  font-family: orbitron;
+  color: rgb(14, 162, 195);
+}
+
+p{
+  font-family: orbitron;
+}
+
+article{
+  font-family: orbitron;
 }
 
 
 button {
   text-align: right;
 }
-
 
 
 $btn-bg-color: #1cbed3;
@@ -95,6 +110,7 @@ $btn-radius: 0px;
 .btn-primary{
   background-color: black;
   color: white;
+  font-family: orbitron;
   &:hover{
     color: var(--neon-cyan);
   }

@@ -18,6 +18,8 @@ export class Levels implements OnInit, OnDestroy {
   levels: { id: number, name: string }[] = [];
   nivellsCompletats: number[] = [];
 
+  private boundUnityHandler = this.handleUnityMessage.bind(this);
+
   constructor(
     private unityService: UnityService,
     private levelsService: Level,
@@ -39,7 +41,7 @@ export class Levels implements OnInit, OnDestroy {
   });
 
   // Escucha el mensaje que manda Unity al acabar partida
-    window.addEventListener('message', this.handleUnityMessage.bind(this));
+    window.addEventListener('message', this.boundUnityHandler);
 
   // Siempre reiniciamos porque el canvas es nuevo cada vez
   this.unityService.setInstance(null);
@@ -75,7 +77,7 @@ cargarNivel(levelName: string, event: MouseEvent) {
 }
 
  ngOnDestroy(): void {
-    window.removeEventListener('message', this.handleUnityMessage.bind(this));
+    window.removeEventListener('message', this.boundUnityHandler);
   }
 
   handleUnityMessage(event: MessageEvent): void {

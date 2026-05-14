@@ -12,8 +12,8 @@
 }
 
 h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: teal;
+  font-family: orbitron;
+  color: rgb(14, 162, 195);
   font-size: clamp(1.2rem, 4vw, 2rem);
   font-weight: bold;
 }
@@ -53,4 +53,31 @@ button {
 
 .row{
   width: 100%;
+}
+
+button{
+  font-family: orbitron;
+  border-radius: 30%;
+  color: cyan;
+  transition-duration: 0.3s;
+  padding: 5px;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  &:hover{
+    transform: translateY(-8px);
+  }
+  &:disabled{
+    background-color: rgb(121, 17, 17);
+    color: aquamarine;
+    cursor: not-allowed;
+    &:hover{
+      transform: none;
+    }
+  }
+  &:not(:disabled) {
+    background-color: black;
+    &:hover{
+      border-color: aqua;
+    }
+  }
 }
