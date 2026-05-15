@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const pool = require('../db');
-const { OAuth2Client } = require('google-auth-library');
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+//const { OAuth2Client } = require('google-auth-library');
+//const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
 });
     
 const auth = require('../middleware/auth');
-
+/* //en un futuro se puede usar para implementar perfiles en usuarios
 router.get('/me', auth, async (req, res) => {
     try {
         const userResult = await pool.query(
@@ -87,7 +87,7 @@ router.get('/me', auth, async (req, res) => {
         console.error(err);
         res.status(500).json({ msg: "Error del servidor" });
     }
-});
+}); */
 
 /*router.post('/google', async (req, res) => {
     const { googleToken } = req.body;
