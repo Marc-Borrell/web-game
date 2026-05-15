@@ -13,7 +13,7 @@ import { TimeFormatPipe } from '../../shared/pipes/time-format.pipe';
 export class Ranking implements OnInit{
   ranking: RankingEntry[] = [];
   levelSeleccionat: number = 1;
-  nivells: number[] = [1,2,3,4];
+  nivells: number[] = [1,2,3,4,5];
   carregant: boolean = false;
 
   constructor(private rankingService: RankingService) {}
