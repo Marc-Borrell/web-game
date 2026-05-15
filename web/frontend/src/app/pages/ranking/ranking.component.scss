@@ -1,0 +1,36 @@
+.main{
+    height: 100vh;
+}
+
+button{
+  font-family: orbitron;
+  border-radius: 30%;
+  color: cyan;
+  transition-duration: 0.3s;
+  padding: 5px;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  background-color: black;
+  &:hover{
+    transform: translateY(-8px);
+    border-color: aqua;
+  }
+}
+
+h1{
+    font-family: Orbitron;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(14, 162, 195);
+    border-radius: 50%;
+}
+
+.text-center{
+    font-family: orbitron;
+}
+table{
+    font-family: orbitron;
+}
+th{
+    color: aqua;
+}

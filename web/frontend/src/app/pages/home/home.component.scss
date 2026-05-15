@@ -1,0 +1,131 @@
+:host {
+    --bg-body: #08090a;
+    --bg-card: #ebebebaf;
+    --bg-card-night: #121417;
+    --bg-header: rgba(10, 11, 13, 0.95);
+    --neon-cyan: #00f2ff;
+    --neon-green: #32ff7e;
+    --glitch-magenta: #ff0055;
+    --text-main: #e0e0e0;
+}
+
+.resaltado{
+  color: rgb(14, 162, 195);
+}
+h2 {
+  font-family: orbitron;
+  color: black;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: bold;
+}
+
+
+h3{
+  font-family: orbitron;
+  color: rgb(14, 162, 195);
+}
+
+p{
+  font-family: orbitron;
+}
+
+article{
+  font-family: orbitron;
+}
+
+
+button {
+  text-align: right;
+}
+
+
+$btn-bg-color: #1cbed3;
+$btn-text-color: #ffffff;
+$btn-padding: 10px 20px;
+$btn-radius: 0px;
+
+.btnJugar{
+
+  text-decoration: none;
+  display: inline-block;
+
+  background-color: $btn-bg-color;
+  color: $btn-text-color;
+  padding: $btn-padding;
+  border-radius: $btn-radius;
+  margin-bottom: 25px;
+
+  transition: background-color 0.3 ease;
+
+  &:hover{
+    background-color: $btn-bg-color;
+    color: white;
+  }
+}
+
+.btn-action {
+    background: var(--bg-body);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 10px 20px;
+    font-family: 'VT323';
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    
+    transition: 0.2s;
+}
+
+.btn-action:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.canvas-wrapper {
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden; // corta cualquier desbordamiento
+
+  #unity-canvas {
+    width: 100% !important;
+    height: 600px !important;
+    max-width: 960px;
+    display: block;
+    border: 1px solid #ccc;
+    // Escalamos visualmente el canvas manteniendo su resolución interna
+    aspect-ratio: 960 / 600;
+    object-fit: contain;
+    position: block;
+    margin: auto;
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 120px);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.btn-primary{
+  background-color: black;
+  color: white;
+  font-family: orbitron;
+  &:hover{
+    color: var(--neon-cyan);
+  }
+}
+
+.row{
+  width: 100%;
+}
+
+.bloque{
+  transition: all 0.3s ease;
+}
+
+.bloque:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px #00f2ff75;
+    transform: translateY(-5px);
+}

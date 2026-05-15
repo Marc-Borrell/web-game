@@ -1,0 +1,44 @@
+<div class="nav-container">
+  <nav class="navbar navbar-expand-md navbar-dark">
+
+    <a class="navbar-brand" [routerLink]="['/home']">
+      <img src="titulo-white2.png" alt="logo">
+    </a>
+
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/levels']">Nivells</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/rankings']">Ranking</a>
+        </li>
+
+        <li class="nav-item dropdown ms-md-3">
+          <a class="nav-link dropdown-toggle user-name" href="#"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ this.usuari }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <button class="dropdown-item btn-logout" (click)="logout()">
+                Tancar sessió
+              </button>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+</div>

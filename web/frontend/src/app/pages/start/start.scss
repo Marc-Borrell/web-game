@@ -1,0 +1,200 @@
+:host {
+    --bg-body: #08090a;
+    --bg-card: #121417;
+    --bg-header: rgba(10, 11, 13, 0.95);
+    --neon-cyan: #00f2ff;
+    --neon-green: #32ff7e;
+    --glitch-magenta: #ff0055;
+    --text-main: #e0e0e0;
+}
+
+/* Efecto Glitch para la "O" */
+.glitch-o {
+    position: relative;
+    color: var(--text-main);
+    display: inline-block;
+}
+
+.glitch-o::before,
+.glitch-o::after {
+    content: 'O';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-body);
+}
+
+.glitch-o::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--glitch-magenta);
+    clip-path: inset(10px, 999px, 15px, 0);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch-o::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--neon-cyan);
+    clip-path: inset(20px, 999px, 25px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(0);
+    }
+
+    20% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        clip-path: inset(50% 0 20% 0);
+        transform: translate(2px, -1px);
+    }
+
+    60% {
+        clip-path: inset(20% 0 60% 0);
+        transform: translate(-1px, 1px);
+    }
+
+    80% {
+        clip-path: inset(40% 0 30% 0);
+        transform: translate(1px, -2px);
+    }
+
+    100% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(0);
+    }
+}
+
+.protocol {
+    font-family: 'VT323';
+    color: var(--neon-cyan);
+    letter-spacing: 3px;
+    margin-left: 45px;
+}
+
+
+.logo {
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+.nomComplet {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-size: 80px;
+    display: flex;
+    flex-direction: column;
+    //min-height: 100vh;
+    //background-size: 100% 50px, 54px 100%;
+}
+
+
+.container-fluid{
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    min-height: 100vh;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-prueba{
+    background-color: var(--bg-body);
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    border-radius: 20px;
+    &:hover{
+        background-color: var(--neon-cyan);
+        color: wheat;
+        border-bottom: 2px solid var(--neon-cyan);
+        box-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+}
+
+.dropdown-item{
+    color: var(--neon-cyan);
+    transition: transform 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    &:hover{
+        color: darkorange;
+        transform: scale(1.05);
+    }
+}
+
+// Animaciones de la imagen
+
+    /* El contenedor define la perspectiva 3D */
+    .alt3D-container {
+      perspective: 1000px;
+      width: 55%;
+    }
+
+    .image-card {
+      
+      position: relative;
+      transition: transform 0.1s ease-out; /* Suaviza el movimiento */
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      
+      cursor: pointer;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      pointer-events: none; /* Evita que la imagen interfiera con el mouse */
+      transform: translateZ(-50px)  rotate(30deg);
+    }
+
+    /* Brillo dinámico (Glow) */
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.2) 0%, transparent 80%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .image-card:hover::after {
+      opacity: 1;
+    }
+
+    .floating-wrapper {
+      animation: floatAnimation 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+      display: block;
+    }
+
+    @keyframes floatAnimation {
+      0% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+        /*box-shadow: 0 10px 30px rgba(0,0,0,0.5);*/
+      }
+      50% {
+        /* Se eleva un poco y se inclina ligeramente en 3D */
+        transform: translateY(-15px) rotateX(1deg) rotateY(-1deg);
+        /*box-shadow: 0 25px 50px rgba(0,0,0,0.3);*/ /* Sombra más suave y difusa al subir */
+      }
+      100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+        /*box-shadow: 0 10px 30px rgba(0,0,0,0.5);*/
+      }
+    }
+
+.container-fluid {
+    padding-left: 6%;
+}

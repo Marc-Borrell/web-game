@@ -1,0 +1,23 @@
+footer {
+  background-color: #000;
+  border-top: 1px solid #1a1a1a;
+  padding: 10px;
+  box-sizing: border-box;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  li {
+    color: white;
+    font-family: orbitron;
+    font-size: 14px;
+    text-align: center;
+  }
+}

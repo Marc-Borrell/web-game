@@ -1,0 +1,19 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# Build output (si usas TypeScript o build step)
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
