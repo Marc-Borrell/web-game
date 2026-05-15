@@ -2,3 +2,8 @@
 MON_Protocol/Assets/Settings/*RPAsset.asset
 MON_Protocol/ProjectSettings/GraphicsSettings.asset
 MON_Protocol/ProjectSettings/ShaderGraphSettings.asset
+/MON_Protocol
+web/frontend/public/unity
+frontend/public/unity/Build/juegoxd.framework.js
+frontend/public/unity/Build/juegoxd.wasm
+frontend/public/unity/Build/juegoxd.framework.js
