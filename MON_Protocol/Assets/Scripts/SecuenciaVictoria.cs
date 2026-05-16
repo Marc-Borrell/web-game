@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SecuenciaVictoria : MonoBehaviour
 {
     public Transform elevador;
-    public GameObject player; // El conejo (Bunny)
+    private GameObject player; // El conejo (Bunny)
     public GameObject nanobot;
     public TextMeshPro PlayerName;
     
@@ -48,7 +48,17 @@ public class SecuenciaVictoria : MonoBehaviour
 
     public void IniciarAnimacionFinal()
     {
-        StartCoroutine(RutinaExtraccion());
+        player = GameObject.FindWithTag("Player");
+
+        if (player != null)
+        {
+            Debug.Log("¡Jugador detectado dinámicamente para la cinemática!: " + player.name);
+            StartCoroutine(RutinaExtraccion());
+        }
+        else
+        {
+            Debug.LogError("¡ERROR CRÍTICO! No se encontró ningún objeto con el tag 'Player' activo en la escena.");
+        }
     }
 
     IEnumerator RutinaExtraccion()
