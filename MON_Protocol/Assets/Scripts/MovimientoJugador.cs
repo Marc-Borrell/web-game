@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 {
+    [Header("Efectos de Sonido (SFX)")]
+    public AudioClip sonidoSalto; 
+    [Range(0f, 1f)] public float volumenSonido = 0.5f; 
+    private AudioSource audioSource;
+    
     [Header("Configuración de Rejilla")]
     public float gridUnit = 1.0f;        
     public float moveSpeed = 5.0f;       
@@ -11,6 +16,23 @@ public class MovimientoJugador : MonoBehaviour
     
     private bool isMoving = false;      
     private Vector3 targetPosition;
+    
+    
+    void Awake()
+    {
+        // Obtenemos el componente AudioSource al despertar
+        audioSource = GetComponent<AudioSource>();
+        
+        // Si no lo añadiste en el inspector, lo creamos automáticamente por seguridad
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Configuración básica para efectos de sonido instantáneos
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+    }
 
     void Update()
     {
@@ -69,6 +91,12 @@ public class MovimientoJugador : MonoBehaviour
     private IEnumerator MoveRoutine(Vector3 target)
     {
         isMoving = true;
+        
+        //audio
+        if (audioSource != null && sonidoSalto != null)
+        {
+            audioSource.PlayOneShot(sonidoSalto, volumenSonido);
+        }
 
         Vector3 startPosition = transform.position;
         float elapsedTime = 0;

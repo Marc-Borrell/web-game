@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             usernameText = tmp.GetComponent<TMP_Text>();
 
         if (usernameText != null && !string.IsNullOrEmpty(usuario))
-            usernameText.text = usuario;
+            usernameText.text = GetDisplayName();
     }
 
     private string authToken;
@@ -59,17 +59,45 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Token recibido: " + authToken);
         Debug.Log("Usuario actual: " + usuario);
-
+        
+        
         if (usernameText != null)
         {
-            usernameText.text = usuario;
+            usernameText.text = GetDisplayName();
         }
+        
     }
 
     public void LoadLevel(string levelName)
     {
         Debug.Log("Cargando nivel: " + levelName);
         SceneManager.LoadScene(levelName);
+    }
+
+    public string GetDisplayName()
+    {
+        if (usuario.Length >= 11)
+        {
+            return usuario.Substring(0, 11) + "...";
+        }
+        
+        return usuario;
+    }
+    
+    public void PausarAudio(string value)
+    {
+        if (AudioManager.instancia != null)
+        {
+            AudioManager.instancia.PausarMusica(value);
+        }
+    }
+
+    public void DetenerAudio(string value)
+    {
+        if (AudioManager.instancia != null)
+        {
+            AudioManager.instancia.DetenerMusica(value);
+        }
     }
     
     
