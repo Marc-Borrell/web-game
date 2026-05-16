@@ -51,9 +51,9 @@ export class Levels implements OnInit, OnDestroy {
 
   // @ts-ignore
   createUnityInstance(document.querySelector("#unity-canvas"), {
-    dataUrl: "/unity/Build/juegoxd.data",
-    frameworkUrl: "/unity/Build/juegoxd.framework.js",
-    codeUrl: "/unity/Build/juegoxd.wasm",
+    dataUrl: "/unity/Build/unity.data",
+    frameworkUrl: "/unity/Build/unity.framework.js",
+    codeUrl: "/unity/Build/unity.wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "QQClan",
     productName: "NOM-Protocol",

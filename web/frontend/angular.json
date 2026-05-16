@@ -30,7 +30,7 @@
               }
             ],
             "scripts": [
-              "public/unity/Build/juegoxd.loader.js"
+              "public/unity/Build/unity.loader.js"
             ],
             "styles": [
               "src/styles.scss",
