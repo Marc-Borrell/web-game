@@ -1,0 +1,48 @@
+<app-navbar />
+<header>
+    <script src="/src/assets/unity/Build/probaWeb.loader.js"></script>
+</header>
+<div class="page">
+    
+    <div class="main-content container-fluid d-flex flex-column align-items-center text-center py-4 px-2 px-md-4">
+            
+            <h1>Nivells</h1>
+            <div class="row justify-content-center g-2 mb-4">
+                <div class="col-md-2 col-2"></div>
+                @for (level of levels; track level.id) {
+                    <div class="col-auto">
+                        <button 
+                         [class.bloquejat]="!isNivellDesbloquejat(level.id)"
+                         [disabled]="!isNivellDesbloquejat(level.id)"
+                        (click)="cargarNivel(level.name, $event)">
+                        @if (isNivellDesbloquejat(level.id)) {
+                            {{ level.name }}
+                        }@else {
+                            {{level.name}}
+                        }
+                            
+                        </button>
+                    </div>       
+                }
+                <div class="col-md-2 col-2"></div>
+            </div>
+            
+
+            <!-- Implementació de joc -->
+            <div class="row justify-content-md-center">
+                <div class="col-md-2 col-2"></div>
+                
+                <div class="col-md-8 col-8 d-flex justify-content-md-center middleContent">
+                    <div class="canvas-wrapper">
+                        <canvas
+                            id="unity-canvas"
+                            width="960"
+                            height="600">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="col-md-2 col-2"></div>
+            </div>
+        </div>
+</div>
+<app-footer />

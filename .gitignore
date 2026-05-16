@@ -1,16 +1,25 @@
 # Unity
-Library/
-Temp/
-Obj/
-Build/
-Builds/
-Logs/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
 UserSettings/
 
-# Web
+# Unity Settings 
+MON_Protocol/Assets/Settings/*RPAsset.asset
+MON_Protocol/ProjectSettings/GraphicsSettings.asset
+MON_Protocol/ProjectSettings/ShaderGraphSettings.asset
+
+# Web / Node
 node_modules/
 dist/
 build/
+
+# Frontend Unity export
+web/frontend/public/unity
+frontend/public/unity/Build/
 
 # Visual Studio
 .vs/
