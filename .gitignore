@@ -1,0 +1,22 @@
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# Web
+node_modules/
+dist/
+build/
+
+# Visual Studio
+.vs/
+*.csproj
+*.sln
+*.user
+
+# Env
+.env
