@@ -43,9 +43,23 @@ export class Levels implements OnInit, OnDestroy {
   // Escucha el mensaje que manda Unity al acabar partida
     window.addEventListener('message', this.boundUnityHandler);
 
-  // Siempre reiniciamos porque el canvas es nuevo cada vez
-  this.unityService.setInstance(null);
+     const instanceAnterior = this.unityService.getInstance();
+  if (instanceAnterior) {
+    instanceAnterior.SendMessage('GameManager', 'DetenerAudio', 'true');
+    setTimeout(() => {
+      instanceAnterior.Quit().then(() => {
+        this.unityService.setInstance(null);
+        this.iniciarUnity();
+      });
+    }, 200);
+  } else {
+    this.iniciarUnity();
+  }
+  }
 
+  // Siempre reiniciamos porque el canvas es nuevo cada vez
+  //.unityService.setInstance(null);
+private iniciarUnity() {
   const token = this.authService.getToken();
   const username = this.authService.getUser().name;
 
@@ -78,6 +92,17 @@ cargarNivel(levelName: string, event: MouseEvent) {
 
  ngOnDestroy(): void {
     window.removeEventListener('message', this.boundUnityHandler);
+
+    const instance = this.unityService.getInstance();
+  if (instance) {
+    // Detiene completamente el audio al salir de la ruta
+    instance.SendMessage('GameManager', 'DetenerAudio', 'true');
+    setTimeout(() => {
+      instance.Quit().then(() => {
+        this.unityService.setInstance(null);
+      });
+    }, 200);
+  }
   }
 
   handleUnityMessage(event: MessageEvent): void {
