@@ -10,20 +10,19 @@
             <div class="row justify-content-center g-2 mb-4">
                 <div class="col-md-2 col-2"></div>
                 @for (level of levels; track level.id) {
+                    @if (level.id !== 6 || nivellsCompletats.includes(level.id)){
                     <div class="col-auto">
                         <button 
                          [class.bloquejat]="!isNivellDesbloquejat(level.id)"
+                         [class.secret]="level.id === 6"
                          [disabled]="!isNivellDesbloquejat(level.id)"
                         (click)="cargarNivel(level.name, $event)">
-                        @if (isNivellDesbloquejat(level.id)) {
-                            {{ level.name }}
-                        }@else {
-                            {{level.name}}
-                        }
-                            
+                        {{level.id == 6 ? '???' : level.name}}
+                       
                         </button>
                     </div>       
                 }
+            }
                 <div class="col-md-2 col-2"></div>
             </div>
             

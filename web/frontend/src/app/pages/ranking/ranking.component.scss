@@ -34,3 +34,14 @@ table{
 th{
     color: aqua;
 }
+
+.btn-secret {
+  border-color: gold;
+  color: gold;
+
+  &:hover, &.actiu {
+    background-color: #111;
+    border-color: gold;
+    color: gold;
+  }
+}

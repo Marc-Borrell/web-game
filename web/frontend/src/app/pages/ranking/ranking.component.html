@@ -10,6 +10,13 @@
         Nivell {{ nivell }}
       </button>
       }
+      @if (mostrarSecret) {
+        <button class="btn-nivell btn-secret"
+          [class.actiu]="levelSeleccionat === nivellSecret"
+          (click)="levelSeleccionat=nivellSecret; carregarRanking()">
+          ???
+        </button>
+      }
     </div>
 
     <div class="taula-wrapper">

@@ -124,6 +124,10 @@ cargarNivel(levelName: string, event: MouseEvent) {
 }
 
   isNivellDesbloquejat(levelId: number): boolean {
+    if (levelId === 6) {
+    return this.nivellsCompletats.includes(levelId);
+  }
+
     if(levelId === 1 ) return true;
    for (let i = 1; i < levelId; i++) {
     if (!this.nivellsCompletats.includes(i)) return false;
