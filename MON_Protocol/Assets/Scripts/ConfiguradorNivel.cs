@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ConfiguradorNivel : MonoBehaviour
@@ -104,5 +106,11 @@ public class ConfiguradorNivel : MonoBehaviour
             constraint.AddSource(nuevaFuente);
             constraint.constraintActive = true;
         }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

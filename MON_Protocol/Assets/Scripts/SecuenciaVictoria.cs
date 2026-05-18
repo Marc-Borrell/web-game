@@ -210,14 +210,14 @@ public class SecuenciaVictoria : MonoBehaviour
 
         // Rellenamos puntos
         if (manager != null)
-            textoPuntosFinal.text = "Puntos: " + manager.GetPuntaje(); 
+            textoPuntosFinal.text = "score: " + manager.GetPuntaje(); 
 
         // Rellenamos tiempo
         if (timer != null)
         {
             int minutos = Mathf.FloorToInt(timer.tiempoEnSegundos / 60);
             int segundos = Mathf.FloorToInt(timer.tiempoEnSegundos % 60);
-            textoTiempoFinal.text = string.Format("Tiempo: {0:00}:{1:00}", minutos, segundos);
+            textoTiempoFinal.text = string.Format("Temps: {0:00}:{1:00}", minutos, segundos);
         }
         
         int totalEscenas = SceneManager.sceneCountInBuildSettings;
