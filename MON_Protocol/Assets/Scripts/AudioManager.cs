@@ -82,6 +82,54 @@ public class AudioManager : MonoBehaviour
         }
     }
     
+    private bool suenaMusicaSecreta = false;
+    public void CambiarMusicaInteligente(AudioClip nuevoClip, float nuevoVolumen, bool esEscenaSecreta)
+    {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.loop = true;
+        }
+
+        // CASO A: Entramos al nivel secreto -> Cambiamos la música SÍ O SÍ
+        if (esEscenaSecreta)
+        {
+            if (audioSource.clip != nuevoClip)
+            {
+                this.volumen = nuevoVolumen;
+                audioSource.volume = nuevoVolumen;
+                audioSource.clip = nuevoClip;
+                audioSource.Play();
+                suenaMusicaSecreta = true; // Recordamos que pusimos la música especial
+                Debug.Log("AudioManager: Forzando música misteriosa del nivel secreto.");
+            }
+            return;
+        }
+
+        // CASO B: Estamos en un nivel común, pero veníamos del nivel secreto -> Restauramos música común
+        if (!esEscenaSecreta && suenaMusicaSecreta)
+        {
+            this.volumen = nuevoVolumen;
+            audioSource.volume = nuevoVolumen;
+            audioSource.clip = nuevoClip;
+            audioSource.Play();
+            suenaMusicaSecreta = false; // Ya no suena la música secreta
+            Debug.Log("AudioManager: Volviendo del nivel secreto. Restaurando música común del laboratorio.");
+            return;
+        }
+
+        // CASO C: Saltamos entre niveles comunes (Ej: Nivel 1 al Nivel 2) 
+        // Usamos la lógica de InicializarMusicaDePrueba original: solo suena si venías en silencio (modo prueba)
+        // o si de verdad la canción es diferente, evitando que se reinicie la misma pista desde cero.
+        if (audioSource.clip == null || (audioSource.clip != nuevoClip && !audioSource.isPlaying))
+        {
+            this.volumen = nuevoVolumen;
+            audioSource.volume = nuevoVolumen;
+            audioSource.clip = nuevoClip;
+            audioSource.Play();
+        }
+    }
+    
     void OnApplicationFocus(bool tieneFoco)
     {
         if (audioSource != null)
@@ -96,6 +144,25 @@ public class AudioManager : MonoBehaviour
                 // El usuario cambió de pestaña: silenciamos por completo
                 audioSource.volume = 0f; 
             }
+        }
+    }
+    
+    public void CambiarMusicaForzado(AudioClip nuevoClip, float nuevoVolumen)
+    {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.loop = true;
+        }
+
+        // Solo la cambiamos si es un clip diferente para evitar reinicios molestos
+        if (audioSource.clip != nuevoClip)
+        {
+            this.volumen = nuevoVolumen; // Actualizamos el volumen de referencia global
+            audioSource.volume = nuevoVolumen;
+            audioSource.clip = nuevoClip;
+            audioSource.Play();
+            Debug.Log("AudioManager: Música cambiada forzosamente a: " + nuevoClip.name);
         }
     }
     

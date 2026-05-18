@@ -16,6 +16,11 @@ public class RestartControl : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void ContinueGame()
     {
         // 1. Obtenemos el índice de la escena actual (ej. si es la 1...)
@@ -33,7 +38,7 @@ public class RestartControl : MonoBehaviour
         {
             Debug.LogWarning("No hay más escenas después de esta en el Build Settings.");
             // Opcional: Volver al menú principal
-            // SceneManager.LoadScene(0);
+            // 
         }
     }
 }
