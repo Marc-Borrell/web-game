@@ -18,8 +18,7 @@ dist/
 build/
 
 # Frontend Unity export
-web/frontend/public/unity
-frontend/public/unity/Build/
+
 
 # Visual Studio
 .vs/
